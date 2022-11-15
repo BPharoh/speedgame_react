@@ -26,3 +26,7 @@
 .result {
   margin: 20px;
 }
+
+.active {
+  background-color: green;
+}

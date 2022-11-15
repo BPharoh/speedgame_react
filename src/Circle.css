@@ -9,4 +9,9 @@
     border-radius: 50%;
     background-color: brown;
     padding: 10px;
+    display: inline-block;
+}
+
+.active {
+    background-image: url('https://media.tenor.com/VYWRf4TfKAUAAAAM/kukek.gif');
 }
