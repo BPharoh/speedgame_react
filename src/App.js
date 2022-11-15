@@ -16,7 +16,8 @@ class App extends Component {
   }
 
   // showCircleHandler = (id) => {
-  //   this.state.circles.map((circle)=> id)
+  //   this.state.circles.map((id)=> {
+  //     return id});
   //   console.log(id);
   // }
 
@@ -27,11 +28,6 @@ class App extends Component {
   
   render() {
 
-    // const circles = 
-    // this.state.circles.map((circle) => 
-    // <Circle id={circle.key}
-    // click={this.clickHandler}
-    // )
 
     return (
       <div className='gameContainer'>
@@ -39,7 +35,6 @@ class App extends Component {
         <p className="result" > Score: <span>{this.state.score} </span></p>
         <Circle 
           clicks={this.clickHandler}
-          //{circles}
         />
         <button >Start Game</button>
         <button>End Game</button>
