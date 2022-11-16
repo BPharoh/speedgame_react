@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url('https://365psd.com/images/istock/previews/8787/87879565-game-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .gameContainer {
-  background: linear-gradient(to right, blue, green);
   text-align: center;
   padding: 20px;
   height: 100vh;
@@ -15,12 +20,21 @@
   flex-direction: column;
 }
 
-.gameContainer button {
-  background-color: darkcyan;
+.gameTitle {
+  margin: 50px;
+}
+
+.gameScore {
+  margin: 50px;
+}
+
+.buttons button {
+  background-color: rgb(23, 223, 223);
   border-radius: 5px;
   padding: 5px;
-  min-width: 120px;
-  margin-top: 20px;
+  min-width: 160px;
+  margin: 60px 20px;
+  text-align: center;
 }
 
 .result {

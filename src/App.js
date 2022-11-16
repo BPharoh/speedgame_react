@@ -19,6 +19,7 @@ class App extends Component {
     gameOver: false,
     gameOn: false,
     rounds: 0,
+    message: "",
   };
 
 
@@ -36,15 +37,19 @@ timer;
   clickHandler = (i) => {
     // clicksound.play();
     if (this.state.current !== i){
-      this.stopHandler();
+      this.setState({
+        rounds: this.state.rounds - 1,
+      })
       return;
-    }
+    } else { 
     this.setState({
       score: this.state.score + 1,
       rounds: 0,
     });
+  }
   };
 
+  //this.stopHandler();
   nextCirce = () => {
     if (this.state.rounds >= 3){
       this.stopHandler();
@@ -61,14 +66,12 @@ timer;
       pace: this.state.pace * 0.95,
       rounds: this.state.rounds + 1,
     });
-    console.log(this.state.current);
     this.timer = setTimeout(this.nextCirce, this.state.pace);
   };
 
-  
-
   startHandler = () => {
     this.nextCirce();
+    this.setState({gameOn: !this.state.gameOn});
   };
 
   stopHandler = () => {
@@ -77,6 +80,15 @@ timer;
       gameOver: !this.state.gameOver,
     });
     // window.location.reload();
+    if (this.state.score <= 2) {
+      this.setState({
+       message: 'Level 1',
+      });
+    } else if (this.state.score >= 3) {
+      this.setState({
+      message: 'Level 2',
+     });
+    }
   };
 
   closeHandler = () => {
@@ -85,10 +97,11 @@ timer;
   render() {
 
     return (
-         <div>
-          <h1>Speed Game</h1>
-          <p>Your Score: {this.state.score}</p>
-          <div className='circles'>
+         <div className='gameContainer'>
+          <h1 className='gameTitle'>Speed Game</h1>
+          <p className='gameScore'>Your Score: {this.state.score}</p>
+          <p className='gameScore'>Your lives: {this.state.rounds}</p>
+          <div className='circleContainer'>
             {this.state.circles.map((_, i) => ( 
               <Circle 
               key={i} 
@@ -96,22 +109,16 @@ timer;
               //gameStatus={this.state.gameOn}
               click={() => this.clickHandler(i)}
               active={this.state.current === i}
+              gameOnStatus={this.state.gameOn}
               />
             ))}
           </div>
-          {this.state.gameOver && <GameOver  close={this.closeHandler} score={this.state.score}/>}
+          {this.state.gameOver && <GameOver  close={this.closeHandler} score={this.state.score} message={this.state.message}/>}
+          <div className='buttons'>
           <button onClick={this.startHandler}>Start</button>
           <button onClick={this.stopHandler}>End</button>
+          </div>  
          </div>
-      // <div className='gameContainer'>
-      //   <h1> Speed Game  React </h1>
-      //   <p className="result" > Score: <span>{this.state.score} </span></p>
-      //   <Circle 
-      //     clicks={this.clickHandler}
-      //   />
-      //   <button >Start Game</button>
-      //   <button>End Game</button>
-      // </div>
     );
   }
 }
