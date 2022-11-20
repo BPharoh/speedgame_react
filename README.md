@@ -22,11 +22,20 @@ Technologies:
 - The number of birds clicked depends on the level achieved
 - So try nd click more birds to receive higher levels
 
+## Live Page
 
-## Game Picture
+You can play the game with the link below
 
-![Start Game page](/speedgame_react/src/assets/images/game.png)
-![End Game Page](/speedgame_react/src/assets/images/modal.png)
+Click on this [Live Page](https://lambent-monstera-c0d9f2.netlify.app/ "Link to Speed Game") please.
+
+
+### Start Game Page
+
+![Start Game page](/speedgame_react/src/assets/images/game.png "Start Game Page")
+
+### End Game Page
+
+![End Game Page](/speedgame_react/src/assets/images/modal.png "End Game Page")
 
 
 ## Credits
