@@ -38,14 +38,6 @@ Click on this [Live Page](https://lambent-monstera-c0d9f2.netlify.app/ "Link to 
 ![End Game Page](/src/assets/images/modal.png "End Game Page")
 ### Start Game Page
 
-![Start Game page](/src/game.png "Start Game Page")
-
-### End Game Page
-
-![End Game Page](/src/assets/images/modal.png "End Game Page")
-
-
-
 
 ## Credits
 
