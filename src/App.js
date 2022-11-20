@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Circle from './Circle';
 import GameOver from './GameOver';
+import click from './sounds/click.mp3';
+import close from './sounds/close.mp3';
+import birdsound from './sounds/birdsounds.mp3';
 
-// let clicksound = new Audio(click);
+
+let clicksound = new Audio(click);
+let closesound = new Audio(close);
+let gamesound = new Audio(birdsound);
 
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max -min + 1)) + min;
@@ -26,22 +32,16 @@ class App extends Component {
 
 timer;
 
-// clickPlay = () => {
-//   if (clickSound.paused) {
-//     clickSound.play();
-//   } else {
-//     clickSound.currentTime = 0;
-//   }
-// };
 
   clickHandler = (i) => {
-    // clicksound.play();
+   
     if (this.state.current !== i){
       this.setState({
         rounds: this.state.rounds - 1,
       })
       return;
     } else { 
+      clicksound.play();
     this.setState({
       score: this.state.score + 1,
       rounds: 0,
@@ -49,9 +49,8 @@ timer;
   }
   };
 
-  //this.stopHandler();
   nextCirce = () => {
-    if (this.state.rounds >= 3){
+    if (this.state.rounds >= 50){
       this.stopHandler();
       return;
     }
@@ -70,16 +69,18 @@ timer;
   };
 
   startHandler = () => {
+    gamesound.play();
     this.nextCirce();
     this.setState({gameOn: !this.state.gameOn});
   };
 
   stopHandler = () => {
+    closesound.play();
+    gamesound.pause();
     clearTimeout(this.timer);
     this.setState({
       gameOver: !this.state.gameOver,
     });
-    // window.location.reload();
     if (this.state.score <= 2) {
       this.setState({
        message: 'Level 1',
@@ -106,7 +107,7 @@ timer;
               <Circle 
               key={i} 
               id={i + 1} 
-              //gameStatus={this.state.gameOn}
+              gameStatus={this.state.gameOn}
               click={() => this.clickHandler(i)}
               active={this.state.current === i}
               gameOnStatus={this.state.gameOn}
