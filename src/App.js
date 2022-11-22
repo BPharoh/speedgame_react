@@ -24,7 +24,7 @@ class App extends Component {
     pace: 1000,
     gameOver: false,
     gameOn: false,
-    rounds: 0,
+    rounds: 5,
     message: "",
   };
 
@@ -44,13 +44,13 @@ timer;
       clicksound.play();
     this.setState({
       score: this.state.score + 1,
-      rounds: 0,
+      rounds: this.state.rounds,
     });
   }
   };
 
   nextCirce = () => {
-    if (this.state.rounds >= 50){
+    if (this.state.rounds === 0){
       this.stopHandler();
       return;
     }
@@ -63,7 +63,7 @@ timer;
     this.setState({
       current: nextActive,
       pace: this.state.pace * 0.95,
-      rounds: this.state.rounds + 1,
+      rounds: this.state.rounds,
     });
     this.timer = setTimeout(this.nextCirce, this.state.pace);
   };
